@@ -1,65 +1,176 @@
+'use client';
+
 import Image from "next/image";
+import ParallaxWrapper from "./components/ParallaxWrapper";
+import { TypeAnimation } from "react-type-animation";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main className="min-h-screen relative overflow-x-hidden">
+      <div
+        className="absolute inset-0 -z-50 bg-top bg-no-repeat bg-size-[100%_auto]"
+        style={{ backgroundImage: "url('/Aseprite/Langit.png')" }}
+      />
+
+      <ParallaxWrapper>
+
+
+        <div className="h-screen flex flex-col items-center justify-start pt-10 gap-5">
+          <h1 className="font-pixel text-4xl text-white drop-shadow-lg text-center">
+            <TypeAnimation
+              sequence={[
+                'Haloo Zahraaaaa',
+                1000
+              ]}
+              wrapper="span"
+              speed={1}
+              cursor={true}
+              style={{ display: 'inline-block' }}
+            />
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          {/* KUCING JATUH SAAT TANAH TERBUKA */}
+          <ParallaxWrapper
+            startScroll={0}
+            endScroll={600}
+            translateY={['0px', '300px']} // Jatuh ke Jurang!
+            className="z-1 relative mt-5"
           >
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/Aseprite/Koceng.gif"
+              alt="Koceng"
+              width={150}
+              height={150}
+              className="pixelated -mt-32 relative z-10"
+              unoptimized
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          </ParallaxWrapper>
+          <div className="flex -mt-45 relative z-0">
+            <ParallaxWrapper
+              startScroll={0}
+              endScroll={500}
+              translateX={['0px', '-100px']}
+              rotate={[0, 90]}
+              className="origin-top-right"
+            >
+              <Image
+                src="/Aseprite/Tanah.png"
+                alt="Tanah Kiri"
+                width={300}
+                height={100}
+                className="pixelated"
+              />
+            </ParallaxWrapper>
+
+            <ParallaxWrapper
+              startScroll={0}
+              endScroll={500}
+              translateX={['0px', '100px']}
+              rotate={[0, -90]}
+              className="origin-top-left"
+            >
+              <Image
+                src="/Aseprite/Tanah.png"
+                alt="Tanah Kanan"
+                width={300}
+                height={100}
+                className="pixelated scale-x-[-1]"
+              />
+            </ParallaxWrapper>
+          </div>
+
+          <div className="relative -mt-20flex justify-center items-center z-3">
+            <ParallaxWrapper
+              translateY={['-320px', '120px']}
+              scale={[1, 1.8]}
+              className="absolute z-2"
+            >
+              <Image src="/Aseprite/Clouds 2.png" alt="Awan 2" width={500} height={500} className="pixelated" />
+            </ParallaxWrapper>
+          </div>
+
+          <div className="relative -mt-30 flex justify-center items-center z-4">
+            <ParallaxWrapper
+              translateY={['-320px', '120px']}
+              scale={[1, 2]}
+              className="absolute z-4"
+            >
+              <Image src="/Aseprite/Clouds 4.png" alt="Awan 4" width={500} height={500} className="pixelated scale-x-[-1]" />
+            </ParallaxWrapper>
+          </div>
+
+          <div className="relative -mt-100 flex justify-center items-center z-3">
+            <ParallaxWrapper
+              translateY={['-300px', '200px']}
+              scale={[2, 2]}
+              className="absolute z-3"
+            >
+              <Image src="/Aseprite/Clouds 4.png" alt="Awan 4" width={500} height={500} className="pixelated" />
+            </ParallaxWrapper>
+          </div>
+
+          <div className="relative -mt-100 flex justify-center items-center z-3">
+            <ParallaxWrapper
+              translateY={['-300px', '200px']}
+              scale={[2, 2]}
+              className="absolute z-3"
+            >
+              <Image src="/Aseprite/Clouds 5.png" alt="Awan 4" width={500} height={500} className="pixelated" />
+            </ParallaxWrapper>
+          </div>
+
+
+          <ParallaxWrapper
+            translateY={['-320px', '800px']}
+            scale={[0.5, 1.8]}
+            className="z-2"
           >
-            Documentation
-          </a>
+            <Image src="/Aseprite/Koceng parasut.gif" alt="Koceng parasut" width={200} height={200} className="pixelated" />
+          </ParallaxWrapper>
+
+
+          <ParallaxWrapper
+            translateY={['-320px', '120px']}
+            scale={[0.5, 1.8]}
+            className="z-2 absolute left-30 top-1/2"
+            opacity={[0, 2]}
+          >
+            <Image src="/Aseprite/Aloo.gif" alt="Aloo" width={200} height={200} className="pixelated" />
+          </ParallaxWrapper>
+
+
+          <ParallaxWrapper
+            translateY={['50px', '220px']}
+            scale={[0.5, 1.8]}
+            className="z-2 absolute left-30 top-1/2"
+            opacity={[0, 2]}
+          >
+            <Image src="/Aseprite/Raa.gif" alt="Raa" width={200} height={200} className="pixelated" />
+          </ParallaxWrapper>
+
+          <ParallaxWrapper
+            translateY={['150px', '320px']}
+            scale={[0.5, 1.8]}
+            className="z-2 absolute left-30 top-1/2"
+            opacity={[0, 2]}
+          >
+            <Image src="/Aseprite/Happy.gif" alt="Raa" width={200} height={200} className="pixelated" />
+          </ParallaxWrapper>
+
+          <ParallaxWrapper
+            translateY={['250px', '420px']}
+            scale={[0.5, 1.8]}
+            className="z-2 absolute left-30 top-1/2"
+            opacity={[0, 2]}
+          >
+            <Image src="/Aseprite/14 Feb.gif" alt="Raa" width={200} height={200} className="pixelated" />
+          </ParallaxWrapper>
+
+
         </div>
-      </main>
-    </div>
+      </ParallaxWrapper >
+      <div className="h-[4000px] w-full" />
+    </main >
   );
+
 }
